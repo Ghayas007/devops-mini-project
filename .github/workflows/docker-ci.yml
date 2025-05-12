@@ -1,0 +1,22 @@
+name: Build and Test Node App
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Set up Docker
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build Docker Image
+        run: docker build -t devops-app ./app
+
+      - name: Run Test (dummy)
+        run: echo "No tests yet. Add unit tests here!"
